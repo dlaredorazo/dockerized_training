@@ -5,7 +5,7 @@ ARG ssh_pub_key
 
 WORKDIR usr/src/app
 COPY requirements.txt .
-COPY train_ml.sh .
+#COPY train_ml.sh .
 RUN pip install -r requirements.txt
 
 #Install git and download repositories
@@ -40,5 +40,7 @@ RUN cat github-key-temp >> ~/.ssh/known_hosts
 #Clone repos
 RUN git clone git@github.com:dlaredorazo/ml_training.git
 RUN git clone git@github.com:dlaredorazo/models_and_data.git
+
+RUN cp ml_training/train_ml.sh train_ml.sh
 
 #RUN python3 /app/train.py
